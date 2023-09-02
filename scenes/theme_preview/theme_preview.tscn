@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dquk8hn8tdqkp"]
+
+[ext_resource type="Theme" uid="uid://7d4t4gh2mqo0" path="res://themes/aqui_theme/aqui_theme.tres" id="1_1qfxi"]
+
+[node name="ThemePreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1qfxi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.043
+anchor_bottom = 0.03
+offset_right = 13.992
+offset_bottom = 19.68
+theme = ExtResource("1_1qfxi")
+theme_type_variation = &"button0"
+text = "ばしょうおう"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_1qfxi")
+theme_type_variation = &"Panel0"

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dccydx52lbe4d"]
+
+[ext_resource type="Script" path="res://singletons/bubble_column/bubble_column.gd" id="1_s5l2x"]
+[ext_resource type="Theme" uid="uid://7d4t4gh2mqo0" path="res://themes/aqui_theme/aqui_theme.tres" id="1_ye1k5"]
+[ext_resource type="AudioStream" uid="uid://b47vfsmsorh8f" path="res://sounds/fx/bubble_column/bubble_column_open.wav" id="3_eolh4"]
+[ext_resource type="AudioStream" uid="uid://cyvjegl4pjnt2" path="res://sounds/fx/bubble_column/bubble_column_close.wav" id="4_v6wfv"]
+[ext_resource type="AudioStream" uid="uid://doh8723vnpmti" path="res://sounds/fx/bubble_column/bubble_column_success.wav" id="5_1b8f4"]
+[ext_resource type="AudioStream" uid="uid://1cmkhw8xvykk" path="res://sounds/fx/bubble_column/bubble_column_error.wav" id="6_fjhaj"]
+
+[node name="BubbleColumnCanvasLayer" type="CanvasLayer"]
+
+[node name="BubbleColumn" type="Control" parent="."]
+editor_description = "The Bubble Column is Aqui's user-accessible slash-command singleton. "
+visible = false
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s5l2x")
+
+[node name="ErrorStreamPlayer" type="AudioStreamPlayer2D" parent="BubbleColumn"]
+stream = ExtResource("6_fjhaj")
+bus = &"FX"
+area_mask = 128
+
+[node name="SuccessStreamPlayer" type="AudioStreamPlayer2D" parent="BubbleColumn"]
+position = Vector2(132, 144)
+stream = ExtResource("5_1b8f4")
+bus = &"FX"
+area_mask = 128
+
+[node name="CloseStreamPlayer" type="AudioStreamPlayer2D" parent="BubbleColumn"]
+position = Vector2(132, 144)
+stream = ExtResource("4_v6wfv")
+bus = &"FX"
+area_mask = 128
+
+[node name="OpenStreamPlayer" type="AudioStreamPlayer2D" parent="BubbleColumn"]
+position = Vector2(132, 144)
+stream = ExtResource("3_eolh4")
+bus = &"FX"
+area_mask = 128
+
+[node name="LineEdit" type="LineEdit" parent="BubbleColumn"]
+top_level = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_ye1k5")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+context_menu_enabled = false
+
+[connection signal="text_submitted" from="BubbleColumn/LineEdit" to="BubbleColumn" method="_on_line_edit_text_submitted"]

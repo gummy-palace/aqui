@@ -1,0 +1,552 @@
+[gd_scene load_steps=23 format=3 uid="uid://byvhwnq8kfshi"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_44uhb"]
+[ext_resource type="Texture2D" uid="uid://dwhp50iolsaih" path="res://scenes/main_menu/sprites/logo/glow.png" id="1_fgysv"]
+[ext_resource type="Texture2D" uid="uid://c2suatlqwdldf" path="res://scenes/main_menu/sprites/background/background.png" id="1_lle6l"]
+[ext_resource type="Texture2D" uid="uid://bcybxf4opn4e6" path="res://scenes/main_menu/sprites/logo/outline.png" id="2_2yl8s"]
+[ext_resource type="Texture2D" uid="uid://xw0rnue7d7ki" path="res://scenes/main_menu/sprites/fence/fence.png" id="2_87bnl"]
+[ext_resource type="Texture2D" uid="uid://bngj4whmbshnw" path="res://scenes/main_menu/sprites/logo/inside.png" id="3_j1lns"]
+[ext_resource type="PackedScene" uid="uid://clku4a3gi05fy" path="res://scenes/main_menu_control/main_menu_control.tscn" id="7_u7l2j"]
+[ext_resource type="PackedScene" uid="uid://csji0qwko4ebb" path="res://scenes/language_selection_main_menu/language_selection_main_menu.tscn" id="8_n26o8"]
+[ext_resource type="PackedScene" uid="uid://c686fdwvndeb2" path="res://scenes/settings_main_menu/settings_main_menu.tscn" id="9_jtn2o"]
+[ext_resource type="AudioStream" uid="uid://d37wy8fbtqjvx" path="res://sounds/music/main_menu.wav" id="10_66smk"]
+[ext_resource type="PackedScene" uid="uid://cc183iwoslldb" path="res://scenes/save_confirmation_main_menu/save_confirmation_main_menu.tscn" id="11_de87y"]
+[ext_resource type="PackedScene" uid="uid://cvquytal3bvfg" path="res://scenes/main_menu_crab/crab.tscn" id="11_rmdio"]
+[ext_resource type="PackedScene" uid="uid://b7wyp8ajloqk0" path="res://scenes/main_menu_wall/wall.tscn" id="12_stdh6"]
+
+[sub_resource type="Animation" id="Animation_c520l"]
+resource_name = "logo_color_change"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo/Glow:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(6.9644, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo/Inside:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0784314, 0.0705882, 0.113725, 1), Color(0.105882, 0.141176, 0.278431, 1), Color(0.168627, 0.305882, 0.584314, 1), Color(0.152941, 0.537255, 0.803922, 1), Color(0.258824, 0.74902, 0.909804, 1), Color(0.45098, 0.937255, 0.909804, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -720)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, 792), Vector2(128, 72)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:process_material:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.45098, 0.937255, 0.909804, 1), Color(1, 0.941176, 0.537255, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r6bp3"]
+_data = {
+"logo_color_change": SubResource("Animation_c520l")
+}
+
+[sub_resource type="Animation" id="Animation_a7ujs"]
+resource_name = "fade_language_selection_transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuControl:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenuControl:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fence:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 111), Vector2(-30, 127)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fence:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LanguageSelectionMainMenu:modulate")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.1, 1.5),
+"transitions": PackedFloat32Array(0.183011, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("LanguageSelectionMainMenu:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.09, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_w7mpv"]
+resource_name = "fade_save_confirmation_transition"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuControl:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenuControl:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fence:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 111), Vector2(-30, 127)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fence:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SaveConfirmationMainMenu")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"check_save_and_update"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SaveConfirmationMainMenu:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SaveConfirmationMainMenu:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="Animation" id="Animation_301xc"]
+resource_name = "fade_settings_transition"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuControl:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenuControl:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fence:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 111), Vector2(-30, 127)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fence:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SettingsMainMenu:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 1.09, 1.1, 1.1001, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, false, true, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SettingsMainMenu:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4dvbv"]
+_data = {
+"fade_language_selection_transition": SubResource("Animation_a7ujs"),
+"fade_save_confirmation_transition": SubResource("Animation_w7mpv"),
+"fade_settings_transition": SubResource("Animation_301xc")
+}
+
+[sub_resource type="Curve" id="Curve_xd8c5"]
+max_value = 360.0
+bake_resolution = 27
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_780tl"]
+curve = SubResource("Curve_xd8c5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mmbua"]
+emission_shape = 3
+emission_box_extents = Vector3(128, 72, 30)
+particle_flag_disable_z = true
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_curve = SubResource("CurveTexture_780tl")
+scale_min = 0.0
+scale_max = 3.0
+turbulence_noise_speed_random = 0.69
+attractor_interaction_enabled = false
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_44uhb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r6bp3")
+}
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4dvbv")
+}
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_lle6l")
+centered = false
+
+[node name="Crab" parent="Background" instance=ExtResource("11_rmdio")]
+position = Vector2(44, 89)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(128, 792)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_mmbua")
+lifetime = 16.0
+visibility_rect = Rect2(-500, -1000, 1000, 2000)
+local_coords = true
+trail_lifetime = 7.1
+trail_sections = 19
+trail_section_subdivisions = 81
+
+[node name="Logo" type="Node2D" parent="."]
+position = Vector2(128, 60)
+metadata/_edit_group_ = true
+
+[node name="Inside" type="Sprite2D" parent="Logo"]
+modulate = Color(0.0784314, 0.0705882, 0.113725, 1)
+texture = ExtResource("3_j1lns")
+
+[node name="Outline" type="Sprite2D" parent="Logo"]
+texture = ExtResource("2_2yl8s")
+
+[node name="Glow" type="Sprite2D" parent="Logo"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+texture = ExtResource("1_fgysv")
+
+[node name="MainMenuControl" parent="." instance=ExtResource("7_u7l2j")]
+offset_left = 128.0
+offset_top = 100.0
+offset_right = 128.0
+offset_bottom = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Fence" type="Sprite2D" parent="."]
+position = Vector2(0, 111)
+texture = ExtResource("2_87bnl")
+centered = false
+
+[node name="LanguageSelectionMainMenu" parent="." instance=ExtResource("8_n26o8")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_right = 256.0
+offset_bottom = 144.0
+
+[node name="SettingsMainMenu" parent="." instance=ExtResource("9_jtn2o")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_right = 256.0
+offset_bottom = 144.0
+
+[node name="SaveConfirmationMainMenu" parent="." instance=ExtResource("11_de87y")]
+visible = false
+anchors_preset = 15
+offset_right = 256.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_66smk")
+autoplay = true
+bus = &"Music"
+
+[node name="Wall3" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(128, -8)
+
+[node name="Wall2" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(-10, 128)
+rotation = 1.5708
+
+[node name="Wall" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(-10, 384)
+rotation = 1.5708
+
+[node name="Wall4" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(128, 778)
+
+[node name="Wall5" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(-10, 640)
+rotation = 1.5708
+
+[node name="Wall7" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(246, 130)
+rotation = 1.5708
+
+[node name="Wall8" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(246, 386)
+rotation = 1.5708
+
+[node name="Wall10" parent="." instance=ExtResource("12_stdh6")]
+position = Vector2(246, 642)
+rotation = 1.5708
+
+[connection signal="pressed" from="MainMenuControl/CenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/CenterContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/CenterContainer/HBoxContainer/LanguageButton" to="." method="_on_language_button_pressed"]
+[connection signal="pressed" from="MainMenuControl/CenterContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="LanguageSelectionMainMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SettingsMainMenu/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SaveConfirmationMainMenu/TabBar/Confirm/CancelButton" to="." method="_on_cancel_button_pressed"]
+
+[editable path="MainMenuControl"]
+[editable path="LanguageSelectionMainMenu"]
+[editable path="SettingsMainMenu"]
+[editable path="SaveConfirmationMainMenu"]

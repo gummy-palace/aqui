@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvquytal3bvfg"]
+
+[ext_resource type="Texture2D" uid="uid://c1i4wb722auuo" path="res://scenes/main_menu/sprites/crab/crab1.png" id="1_x6s1i"]
+[ext_resource type="Texture2D" uid="uid://otnxbccs375n" path="res://scenes/main_menu/sprites/crab/crab2.png" id="2_v7tjy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrkb2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x6s1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v7tjy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h08gf"]
+radius = 7.07107
+
+[node name="Crab" type="RigidBody2D"]
+gravity_scale = 0.0
+linear_velocity = Vector2(50, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hrkb2")
+frame_progress = 0.762031
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h08gf")

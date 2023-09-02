@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://debrfrpoja70e"]
+
+[ext_resource type="Script" path="res://singletons/printer/printer.gd" id="1_wheah"]
+
+[node name="Printer" type="Node"]
+script = ExtResource("1_wheah")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ojofgiixybh"]
+
+[ext_resource type="Texture2D" uid="uid://c1i4wb722auuo" path="res://scenes/main_menu/sprites/crab/crab1.png" id="1_okwvx"]
+[ext_resource type="Texture2D" uid="uid://bcc6xom3nr2em" path="res://icon.svg" id="2_yp2yf"]
+
+[node name="TankSubViewport" type="SubViewport"]
+gui_disable_input = true
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1.52588e-05, 1.52588e-05)
+scale = Vector2(1, 1)
+
+[node name="Crab1" type="Sprite2D" parent="."]
+position = Vector2(211, 75)
+texture = ExtResource("1_okwvx")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(182, 87)
+texture = ExtResource("2_yp2yf")

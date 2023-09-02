@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c686fdwvndeb2"]
+
+[ext_resource type="Script" path="res://scenes/settings_main_menu/settings_main_menu.gd" id="1_1iw3d"]
+[ext_resource type="Theme" uid="uid://bykrg6edn1cmv" path="res://themes/main_menu_theme/main_menu_theme.theme" id="1_hlh7q"]
+[ext_resource type="PackedScene" uid="uid://d1hfxnj0jf4wo" path="res://scenes/settings_overlay/settings_overlay.tscn" id="2_4uqg6"]
+[ext_resource type="PackedScene" uid="uid://dqvemyvh4p61l" path="res://scenes/back_button/back_button.tscn" id="3_66x0e"]
+
+[node name="SettingsMainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1iw3d")
+
+[node name="TabBar" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+theme = ExtResource("1_hlh7q")
+tab_alignment = 1
+
+[node name="Settings" type="Control" parent="TabBar"]
+layout_mode = 2
+theme = ExtResource("1_hlh7q")
+
+[node name="Panel" type="Panel" parent="TabBar/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hlh7q")
+
+[node name="SettingsOverlay" parent="TabBar/Settings" instance=ExtResource("2_4uqg6")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+
+[node name="BackButton" parent="." instance=ExtResource("3_66x0e")]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 31.0

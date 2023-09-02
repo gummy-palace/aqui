@@ -1,0 +1,21 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://cqeltvqeyatdh"
+path="res://.godot/imported/barefont1.png-196ca120a13e00ca2ad548557ff78045.fontdata"
+
+[deps]
+
+source_file="res://fonts/koko/barefont1.png"
+dest_files=["res://.godot/imported/barefont1.png-196ca120a13e00ca2ad548557ff78045.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("20-191")
+columns=16
+rows=12
+image_margin=Rect2i(0, 0, 192, 256)
+character_margin=Rect2i(1, 1, 16, 16)
+fallbacks=[]
+compress=true
