@@ -19,7 +19,6 @@ func _ready():
 	random.randomize()
 	animation_player.current_animation = "logo_color_change"
 	find_new_location()
-	SettingsHandler.change_setting("sfx", 0.7)
 
 
 func _process(delta):

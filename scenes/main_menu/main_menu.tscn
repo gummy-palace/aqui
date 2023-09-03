@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://byvhwnq8kfshi"]
+[gd_scene load_steps=31 format=3 uid="uid://byvhwnq8kfshi"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_44uhb"]
 [ext_resource type="Texture2D" uid="uid://dwhp50iolsaih" path="res://scenes/main_menu/sprites/logo/glow.png" id="1_fgysv"]
@@ -9,13 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://clku4a3gi05fy" path="res://scenes/main_menu_control/main_menu_control.tscn" id="7_u7l2j"]
 [ext_resource type="PackedScene" uid="uid://csji0qwko4ebb" path="res://scenes/language_selection_main_menu/language_selection_main_menu.tscn" id="8_n26o8"]
 [ext_resource type="PackedScene" uid="uid://c686fdwvndeb2" path="res://scenes/settings_main_menu/settings_main_menu.tscn" id="9_jtn2o"]
-[ext_resource type="AudioStream" uid="uid://d37wy8fbtqjvx" path="res://sounds/music/main_menu.wav" id="10_66smk"]
 [ext_resource type="PackedScene" uid="uid://cc183iwoslldb" path="res://scenes/save_confirmation_main_menu/save_confirmation_main_menu.tscn" id="11_de87y"]
 [ext_resource type="PackedScene" uid="uid://cvquytal3bvfg" path="res://scenes/main_menu_crab/crab.tscn" id="11_rmdio"]
 [ext_resource type="PackedScene" uid="uid://b7wyp8ajloqk0" path="res://scenes/main_menu_wall/wall.tscn" id="12_stdh6"]
+[ext_resource type="AudioStream" uid="uid://bs5vipsi6bpki" path="res://sounds/music/main_menu/Scales_Surface.mp3" id="13_12h75"]
+[ext_resource type="AudioStream" uid="uid://bf77hrmanv6wg" path="res://sounds/music/main_menu/Scales_Reef.mp3" id="14_n8ydg"]
+[ext_resource type="AudioStream" uid="uid://c1wu5ixukdm67" path="res://sounds/music/main_menu/Scales_Depths.mp3" id="15_qxnf7"]
+[ext_resource type="AudioStream" uid="uid://b7shdiu8f31d2" path="res://sounds/music/main_menu/Scales_Floor.mp3" id="16_2etia"]
+[ext_resource type="AudioStream" uid="uid://bgc5qxhs57th8" path="res://sounds/music/main_menu/Scales_Abyss.mp3" id="16_5df2i"]
+[ext_resource type="Shader" path="res://scenes/main_menu/main_menu.gdshader" id="18_i7t0u"]
 
 [sub_resource type="Animation" id="Animation_c520l"]
 resource_name = "logo_color_change"
+step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,6 +81,66 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.45098, 0.937255, 0.909804, 1), Color(1, 0.941176, 0.537255, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MusicFloor:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.751281, 0.783192, 1),
+"transitions": PackedFloat32Array(0.1, 1, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MusicAbyss:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.598212, 0.636073, 0.753985, 0.786979, 1),
+"transitions": PackedFloat32Array(0.1, 1, 5, 1, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0, -80.0, -80.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicDepths:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.413772, 0.460829, 0.596048, 0.632828, 1),
+"transitions": PackedFloat32Array(0.1, 1, 5, 1, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0, -80.0, -80.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MusicReef:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.22356, 0.270855, 0.411723, 0.460288, 1),
+"transitions": PackedFloat32Array(0.1, 1, 5, 1, 1),
+"update": 0,
+"values": [-80.0, 0.0, 0.0, -80.0, -80.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MusicSurface:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.0648429, 0.219056, 0.269358, 1),
+"transitions": PackedFloat32Array(0.1, 1, 5, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, -80.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r6bp3"]
@@ -403,6 +469,29 @@ _data = {
 "fade_settings_transition": SubResource("Animation_301xc")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tj6k"]
+shader = ExtResource("18_i7t0u")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.2
+shader_parameter/spread = 1.0
+shader_parameter/cutoff = -0.079
+shader_parameter/falloff = 0.8
+shader_parameter/edge_fade = 0.729
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Quaternion(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = true
+shader_parameter/seed = 9.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gbvew"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d1n5s"]
+width = 256
+height = 144
+noise = SubResource("FastNoiseLite_gbvew")
+
 [sub_resource type="Curve" id="Curve_xd8c5"]
 max_value = 360.0
 bake_resolution = 27
@@ -441,7 +530,13 @@ libraries = {
 texture = ExtResource("1_lle6l")
 centered = false
 
-[node name="Crab" parent="Background" instance=ExtResource("11_rmdio")]
+[node name="Rays" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_1tj6k")
+position = Vector2(128, 72)
+texture = SubResource("NoiseTexture2D_d1n5s")
+
+[node name="Crab" parent="." instance=ExtResource("11_rmdio")]
 position = Vector2(44, 89)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -497,14 +592,38 @@ offset_bottom = 144.0
 
 [node name="SaveConfirmationMainMenu" parent="." instance=ExtResource("11_de87y")]
 visible = false
-anchors_preset = 15
 offset_right = 256.0
 offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuMusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_66smk")
+[node name="MusicSurface" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_12h75")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="MusicReef" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_n8ydg")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="MusicDepths" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_qxnf7")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="MusicAbyss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_5df2i")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="MusicFloor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_2etia")
+volume_db = -80.0
 autoplay = true
 bus = &"Music"
 
