@@ -149,6 +149,7 @@ texture_margin_bottom = 6.0
 
 [resource]
 default_font = ExtResource("6_gllie")
+default_font_size = 64
 Button/styles/disabled = SubResource("StyleBoxFlat_7435p")
 Button/styles/focus = SubResource("StyleBoxFlat_4yor7")
 Button/styles/hover = SubResource("StyleBoxFlat_xauo0")

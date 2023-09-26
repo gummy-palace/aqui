@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjthvj5agcbvd"]
+
+[ext_resource type="Script" path="res://scenes/vibrar/vibrar.gd" id="1_o5uxk"]
+[ext_resource type="Script" path="res://scenes/vibrar/Button.gd" id="2_b5luf"]
+
+[node name="Vibrar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5uxk")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 102.0
+offset_right = 105.0
+offset_bottom = 133.0
+text = "V"
+script = ExtResource("2_b5luf")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -125.0
+offset_top = 15.0
+offset_right = -29.0
+offset_bottom = 31.0
+max_value = 1.0
+step = 0.01
+
+[node name="HSlider2" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -125.0
+offset_top = 37.0
+offset_right = -29.0
+offset_bottom = 53.0
+max_value = 1.0
+step = 0.01
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="drag_ended" from="HSlider2" to="." method="_on_h_slider_2_drag_ended"]

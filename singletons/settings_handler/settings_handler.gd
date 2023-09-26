@@ -1,4 +1,4 @@
-extends Object
+extends Node
 
 var settings = {
 }
@@ -19,6 +19,9 @@ func _init():
 		var grabbed_setting = config_file.get_value("Settings", setting)
 		settings[setting] = grabbed_setting
 
+func _input(_event):
+	if Input.is_action_just_released("toggle_fullscreen"):
+		pass
 
 func change_setting(setting, value):
 	set_deferred(setting, value)

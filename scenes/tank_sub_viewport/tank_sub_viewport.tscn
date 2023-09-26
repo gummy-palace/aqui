@@ -1,19 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0ojofgiixybh"]
+[gd_scene load_steps=7 format=3 uid="uid://b0ojofgiixybh"]
 
+[ext_resource type="Script" path="res://scenes/tank_sub_viewport/tank_sub_viewport.gd" id="1_5ivwm"]
 [ext_resource type="Texture2D" uid="uid://c1i4wb722auuo" path="res://scenes/main_menu/sprites/crab/crab1.png" id="1_okwvx"]
-[ext_resource type="Texture2D" uid="uid://bcc6xom3nr2em" path="res://icon.svg" id="2_yp2yf"]
+[ext_resource type="PackedScene" uid="uid://crylxnpwyrcsv" path="res://fish/mr_e/mr_e.tscn" id="3_0cl1h"]
+[ext_resource type="Texture2D" uid="uid://bcc6xom3nr2em" path="res://icon.svg" id="3_8fp18"]
+[ext_resource type="Script" path="res://test_class.gd" id="3_a2fue"]
+[ext_resource type="PackedScene" uid="uid://dhu5v4aw58ahs" path="res://scenes/tank_collision_frames/tank_collision_frames.tscn" id="5_hy146"]
 
 [node name="TankSubViewport" type="SubViewport"]
+editor_description = "The maximum space for TankSubViewport is 1792x1008. All must have a 16x9 ratio."
+canvas_item_default_texture_filter = 0
 gui_disable_input = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(384, 216)
+size_2d_override = Vector2i(512, 288)
+script = ExtResource("1_5ivwm")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1.52588e-05, 1.52588e-05)
-scale = Vector2(1, 1)
 
 [node name="Crab1" type="Sprite2D" parent="."]
-position = Vector2(211, 75)
+position = Vector2(48, 64)
 texture = ExtResource("1_okwvx")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(182, 87)
-texture = ExtResource("2_yp2yf")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_8fp18")
+
+[node name="Instance" type="Node2D" parent="."]
+script = ExtResource("3_a2fue")
+speed = 50
+diseases = 8
+character_name = "Leah"
+
+[node name="MrE" parent="." instance=ExtResource("3_0cl1h")]
+position = Vector2(32, 16)
+
+[node name="TankCollisionFrames" parent="." instance=ExtResource("5_hy146")]
+
+[editable path="TankCollisionFrames"]

@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqh0sm5c0ssd4"]
+
+[ext_resource type="Texture2D" uid="uid://c7jtk3er0yknj" path="res://scenes/tank_animator/construction.png" id="1_lk0rw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_03k4c"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubpd3"]
+
+[sub_resource type="Animation" id="Animation_fyjg3"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D/Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(-0.5, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(0.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p62kl"]
+_data = {
+"construction": SubResource("Animation_fyjg3")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u6q8b"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="Gradient" id="Gradient_nqr4v"]
+interpolation_mode = 2
+colors = PackedColorArray(0.68, 0.68, 0.68, 0, 0.811127, 0.811127, 0.811127, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4sqhh"]
+noise_type = 0
+seed = 1321
+frequency = 0.0158
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kowtm"]
+width = 90
+height = 90
+invert = true
+seamless_blend_skirt = 0.478
+color_ramp = SubResource("Gradient_nqr4v")
+noise = SubResource("FastNoiseLite_4sqhh")
+
+[node name="TankAnimator" type="CanvasLayer"]
+
+[node name="Polygon2D" type="Sprite2D" parent="."]
+clip_children = 1
+scale = Vector2(1536, 864)
+texture = SubResource("PlaceholderTexture2D_03k4c")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Polygon2D"]
+scale = Vector2(0.0104167, 0.0185186)
+texture = ExtResource("1_lk0rw")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
+position = Vector2(0.5, 0)
+scale = Vector2(0.0104167, 0.0185185)
+texture = ExtResource("1_lk0rw")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ubpd3"),
+"tank_animations": SubResource("AnimationLibrary_p62kl")
+}
+
+[node name="CPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(749, 518)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_u6q8b")
+texture = SubResource("NoiseTexture2D_kowtm")

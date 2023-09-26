@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://byvhwnq8kfshi"]
+[gd_scene load_steps=29 format=3 uid="uid://byvhwnq8kfshi"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_44uhb"]
 [ext_resource type="Texture2D" uid="uid://dwhp50iolsaih" path="res://scenes/main_menu/sprites/logo/glow.png" id="1_fgysv"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://csji0qwko4ebb" path="res://scenes/language_selection_main_menu/language_selection_main_menu.tscn" id="8_n26o8"]
 [ext_resource type="PackedScene" uid="uid://c686fdwvndeb2" path="res://scenes/settings_main_menu/settings_main_menu.tscn" id="9_jtn2o"]
 [ext_resource type="PackedScene" uid="uid://cc183iwoslldb" path="res://scenes/save_confirmation_main_menu/save_confirmation_main_menu.tscn" id="11_de87y"]
-[ext_resource type="PackedScene" uid="uid://cvquytal3bvfg" path="res://scenes/main_menu_crab/crab.tscn" id="11_rmdio"]
-[ext_resource type="PackedScene" uid="uid://b7wyp8ajloqk0" path="res://scenes/main_menu_wall/wall.tscn" id="12_stdh6"]
 [ext_resource type="AudioStream" uid="uid://bs5vipsi6bpki" path="res://sounds/music/main_menu/Scales_Surface.mp3" id="13_12h75"]
 [ext_resource type="AudioStream" uid="uid://bf77hrmanv6wg" path="res://sounds/music/main_menu/Scales_Reef.mp3" id="14_n8ydg"]
 [ext_resource type="AudioStream" uid="uid://c1wu5ixukdm67" path="res://sounds/music/main_menu/Scales_Depths.mp3" id="15_qxnf7"]
@@ -56,7 +54,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -720)]
+"values": [Vector2(0, 0), Vector2(0, -5760)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -68,7 +66,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(128, 792), Vector2(128, 72)]
+"values": [Vector2(1024, 6336), Vector2(1024, 576)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -209,7 +207,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 111), Vector2(-30, 127)]
+"values": [Vector2(0, 888), Vector2(-240, 1016)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -309,7 +307,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 111), Vector2(-30, 127)]
+"values": [Vector2(0, 888), Vector2(-240, 1016)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -423,7 +421,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 111), Vector2(-30, 127)]
+"values": [Vector2(0, 888), Vector2(-240, 1016)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -481,7 +479,7 @@ shader_parameter/speed = 1.0
 shader_parameter/ray1_density = 8.0
 shader_parameter/ray2_density = 30.0
 shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Quaternion(1, 0.9, 0.65, 0.8)
+shader_parameter/color = Vector4(1, 0.9, 0.65, 0.8)
 shader_parameter/hdr = true
 shader_parameter/seed = 9.0
 
@@ -536,11 +534,9 @@ material = SubResource("ShaderMaterial_1tj6k")
 position = Vector2(128, 72)
 texture = SubResource("NoiseTexture2D_d1n5s")
 
-[node name="Crab" parent="." instance=ExtResource("11_rmdio")]
-position = Vector2(44, 89)
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(128, 792)
+position = Vector2(1024, 6336)
+scale = Vector2(8, 8)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_mmbua")
 lifetime = 16.0
@@ -551,7 +547,7 @@ trail_sections = 19
 trail_section_subdivisions = 81
 
 [node name="Logo" type="Node2D" parent="."]
-position = Vector2(128, 60)
+position = Vector2(1024, 450)
 metadata/_edit_group_ = true
 
 [node name="Inside" type="Sprite2D" parent="Logo"]
@@ -567,39 +563,43 @@ texture_filter = 1
 texture = ExtResource("1_fgysv")
 
 [node name="MainMenuControl" parent="." instance=ExtResource("7_u7l2j")]
-offset_left = 128.0
-offset_top = 100.0
-offset_right = 128.0
-offset_bottom = 100.0
-metadata/_edit_use_anchors_ = true
+offset_top = 176.0
+offset_right = 2048.0
+offset_bottom = 1332.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="CenterContainer" parent="MainMenuControl" index="0"]
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="HBoxContainer" parent="MainMenuControl/CenterContainer" index="0"]
+alignment = 1
 
 [node name="Fence" type="Sprite2D" parent="."]
-position = Vector2(0, 111)
+position = Vector2(0, 888)
 texture = ExtResource("2_87bnl")
 centered = false
 
 [node name="LanguageSelectionMainMenu" parent="." instance=ExtResource("8_n26o8")]
 visible = false
 modulate = Color(1, 1, 1, 0)
-offset_right = 256.0
-offset_bottom = 144.0
+offset_right = 2048.0
+offset_bottom = 1156.0
 
 [node name="SettingsMainMenu" parent="." instance=ExtResource("9_jtn2o")]
 visible = false
-modulate = Color(1, 1, 1, 0)
-offset_right = 256.0
-offset_bottom = 144.0
+offset_right = 2048.0
+offset_bottom = 1152.0
 
 [node name="SaveConfirmationMainMenu" parent="." instance=ExtResource("11_de87y")]
 visible = false
-offset_right = 256.0
-offset_bottom = 144.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 2048.0
+offset_bottom = 1156.0
 
 [node name="MusicSurface" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_12h75")
-volume_db = -80.0
 autoplay = true
 bus = &"Music"
 
@@ -626,36 +626,6 @@ stream = ExtResource("16_2etia")
 volume_db = -80.0
 autoplay = true
 bus = &"Music"
-
-[node name="Wall3" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(128, -8)
-
-[node name="Wall2" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(-10, 128)
-rotation = 1.5708
-
-[node name="Wall" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(-10, 384)
-rotation = 1.5708
-
-[node name="Wall4" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(128, 778)
-
-[node name="Wall5" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(-10, 640)
-rotation = 1.5708
-
-[node name="Wall7" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(246, 130)
-rotation = 1.5708
-
-[node name="Wall8" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(246, 386)
-rotation = 1.5708
-
-[node name="Wall10" parent="." instance=ExtResource("12_stdh6")]
-position = Vector2(246, 642)
-rotation = 1.5708
 
 [connection signal="pressed" from="MainMenuControl/CenterContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuControl/CenterContainer/HBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

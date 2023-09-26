@@ -114,28 +114,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="MiddleLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 17.0
-offset_right = 240.0
-offset_bottom = 144.0
+offset_left = 128.0
+offset_top = 270.0
+offset_right = 1920.0
+offset_bottom = 794.0
 theme_override_fonts/normal_font = ExtResource("1_hiw3d")
+theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "
-"
 fit_content = true
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="BottomLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 17.0
-offset_right = 240.0
-offset_bottom = 144.0
+offset_left = 1.0
+offset_top = 405.0
+offset_right = 2050.0
+offset_bottom = 1149.0
 theme_override_fonts/normal_font = ExtResource("1_hiw3d")
+theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "[center] 
 
@@ -147,16 +146,15 @@ text = "[center]
 [color=RED]Do not[/color] turn off your computer. 
 Stay where you are.[/center]
 "
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="TopLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 17.0
-offset_right = 240.0
-offset_bottom = 32.0
+offset_left = 128.0
+offset_top = 136.0
+offset_right = 1920.0
+offset_bottom = 256.0
 theme_override_fonts/normal_font = ExtResource("1_hiw3d")
+theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "[center] Video game piracy is [color=RED]illegal[/color].[/center]
 "
@@ -169,3 +167,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0)
+metadata/_edit_lock_ = true

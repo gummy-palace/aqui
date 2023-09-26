@@ -1,0 +1,9 @@
+To add a new fish:
+	1. Make a new folder in "res://fish/" with snake case name.
+	2. Make new scene with same name with base node of appropriate Fish2D type.
+	3. Add data to PATHS fish_data.gd like this model: 
+		"MrE":("res://fish/mr_e/mr_e.tscn/"),
+	4. Configure @export variables.
+	5. Add CollisionShape2D and FishAnimator.
+	6. Enable editable children and add the appropriate textures to AnimatedSprite2D.
+	

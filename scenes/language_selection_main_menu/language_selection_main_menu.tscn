@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://csji0qwko4ebb"]
+[gd_scene load_steps=5 format=3 uid="uid://csji0qwko4ebb"]
 
 [ext_resource type="Theme" uid="uid://7d4t4gh2mqo0" path="res://themes/aqui_theme/aqui_theme.tres" id="1_m4kr4"]
 [ext_resource type="Script" path="res://scenes/language_selection_main_menu/language_selection_main_menu.gd" id="2_i5tfa"]
 [ext_resource type="PackedScene" uid="uid://dqvemyvh4p61l" path="res://scenes/back_button/back_button.tscn" id="2_ks5w3"]
+[ext_resource type="Theme" uid="uid://bykrg6edn1cmv" path="res://themes/main_menu_theme/main_menu_theme.theme" id="3_6j8pg"]
 
 [node name="LanguageSelectionMainMenu" type="Control"]
 layout_mode = 3
@@ -21,8 +22,7 @@ anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 0.9
-theme = ExtResource("1_m4kr4")
-theme_type_variation = &"tab_container0"
+theme = ExtResource("3_6j8pg")
 tab_alignment = 1
 
 [node name="Language" type="Control" parent="TabBar"]
@@ -58,10 +58,10 @@ item_2/text = "日本語"
 [node name="BackButton" parent="." instance=ExtResource("2_ks5w3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.117266
-anchor_top = 0.0835486
-anchor_right = 0.117266
-anchor_bottom = 0.0835486
+anchor_left = 0.127939
+anchor_top = 0.0885686
+anchor_right = 0.175791
+anchor_bottom = 0.179714
 offset_left = 1.98
 offset_top = 1.969
 offset_right = 15.98

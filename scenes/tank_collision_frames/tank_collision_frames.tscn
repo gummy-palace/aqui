@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhu5v4aw58ahs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0w6o"]
+size = Vector2(1538, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcchp"]
+size = Vector2(2, 864)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emxnw"]
+size = Vector2(132, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m1ey"]
+size = Vector2(2, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjhsc"]
+size = Vector2(1538, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddmhv"]
+size = Vector2(2, 864)
+
+[node name="TankCollisionFrames" type="StaticBody2D"]
+metadata/_edit_horizontal_guides_ = [862.0]
+
+[node name="TopFrame" type="CollisionShape2D" parent="."]
+position = Vector2(767, -1)
+shape = SubResource("RectangleShape2D_f0w6o")
+
+[node name="LeftFrame" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 430)
+shape = SubResource("RectangleShape2D_rcchp")
+
+[node name="S0F1" type="CollisionShape2D" parent="." groups=["Stage0"]]
+position = Vector2(64, 73)
+shape = SubResource("RectangleShape2D_emxnw")
+
+[node name="S0F2" type="CollisionShape2D" parent="." groups=["Stage0"]]
+position = Vector2(129, 36)
+shape = SubResource("RectangleShape2D_0m1ey")
+
+[node name="S5F3" type="CollisionShape2D" parent="." groups=["Stage5"]]
+position = Vector2(767, 865)
+shape = SubResource("RectangleShape2D_mjhsc")
+
+[node name="S5F4" type="CollisionShape2D" parent="." groups=["Stage5"]]
+position = Vector2(1537, 432)
+shape = SubResource("RectangleShape2D_ddmhv")
+
+[node name="S4F5" type="CollisionShape2D" parent="." groups=["Stage4"]]
+position = Vector2(545, 433)
+shape = SubResource("RectangleShape2D_mjhsc")
+
+[node name="S4F6" type="CollisionShape2D" parent="." groups=["Stage4"]]
+position = Vector2(769, 216)
+shape = SubResource("RectangleShape2D_ddmhv")
+
+[node name="S3F7" type="CollisionShape2D" parent="." groups=["Stage3"]]
+position = Vector2(539, 289)
+shape = SubResource("RectangleShape2D_mjhsc")
+
+[node name="S3F8" type="CollisionShape2D" parent="." groups=["Stage3"]]
+position = Vector2(513, 233)
+shape = SubResource("RectangleShape2D_ddmhv")
+
+[node name="S2F9" type="CollisionShape2D" parent="." groups=["Stage2"]]
+position = Vector2(541, 217)
+shape = SubResource("RectangleShape2D_mjhsc")
+
+[node name="S2F10" type="CollisionShape2D" parent="." groups=["Stage2"]]
+position = Vector2(385, 227)
+shape = SubResource("RectangleShape2D_ddmhv")
+
+[node name="S1F11" type="CollisionShape2D" parent="." groups=["Stage1"]]
+position = Vector2(541, 145)
+shape = SubResource("RectangleShape2D_mjhsc")
+
+[node name="S1F12" type="CollisionShape2D" parent="." groups=["Stage1"]]
+position = Vector2(257, 219)
+shape = SubResource("RectangleShape2D_ddmhv")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(768, 432)
+gizmo_extents = 116.7
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(1536, 864)
+gizmo_extents = 116.7
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(512, 288)
+gizmo_extents = 116.7
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(384, 216)
+gizmo_extents = 116.7
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(256, 144)
+gizmo_extents = 116.7

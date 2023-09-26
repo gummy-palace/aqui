@@ -1,7 +1,7 @@
 extends Node2D
 
-const DEFAULT_INTERPOLATION_WEIGHT = 0.05
-const DEFAULT_INTERPOLATION_WEIGHT_VECTOR = Vector2(DEFAULT_INTERPOLATION_WEIGHT, 0.0)
+const DEFAULT_INTERP_WEIGHT = 0.1
+const VECT_DEFAULT_INTERP_WEIGHT = Vector2(DEFAULT_INTERP_WEIGHT, 0.0)
 const REACHED_THRESHOLD = 0.05
 
 @onready var animation_player = $AnimationPlayer
@@ -13,21 +13,24 @@ const REACHED_THRESHOLD = 0.05
 
 var random = RandomNumberGenerator.new()
 var target_depth := 0.5
-var interpolation_weight := DEFAULT_INTERPOLATION_WEIGHT
+var interp_weight := DEFAULT_INTERP_WEIGHT
 
 func _ready():
 	random.randomize()
 	animation_player.current_animation = "logo_color_change"
 	find_new_location()
+	var fish_to_find = "MrE"
+	var test_fish = load(FishData.PATHS[fish_to_find]).instantiate()
+	print(test_fish.cost)
 
 
 func _process(delta):
 	# because godot doesn't have a lerp function for 1D floats...make it a vector~!
-	var depth_vector = Vector2(depth, 0.0)
-	var target_depth_vector = Vector2(target_depth, 0.0)
-	depth_vector = depth_vector.lerp(target_depth_vector, interpolation_weight * delta)
+	var vect_depth: Vector2 = Vector2(depth, 0.0)
+	var vect_target_depth: Vector2 = Vector2(target_depth, 0.0)
+	vect_depth = vect_depth.lerp(vect_target_depth, interp_weight * delta)
 	
-	depth = depth_vector.x
+	depth = vect_depth.x
 	
 	animation_player.seek(depth, true)
 	
@@ -36,15 +39,15 @@ func _process(delta):
 		find_new_location()
 	
 	# By pressing space, the "camera" will jump to a new place smoothly.
-	var interpolation_weight_vector = Vector2(interpolation_weight, 0.0)
-	interpolation_weight_vector = interpolation_weight_vector.lerp(DEFAULT_INTERPOLATION_WEIGHT_VECTOR, 10 * delta)
-	interpolation_weight = interpolation_weight_vector.x
+	var vect_interp_weight = Vector2(interp_weight, 0.0)
+	vect_interp_weight = vect_interp_weight.lerp(VECT_DEFAULT_INTERP_WEIGHT, 10 * delta)
+	interp_weight = vect_interp_weight.x
 
 
 func _unhandled_input(event):
 	if event.is_action_released("main_menu_jump"):
 		find_new_location()
-		interpolation_weight = 4.0
+		interp_weight = 4.0
 
 
 func find_new_location():

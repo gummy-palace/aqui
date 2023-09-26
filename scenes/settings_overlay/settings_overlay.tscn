@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1hfxnj0jf4wo"]
+[gd_scene load_steps=2 format=3 uid="uid://d1hfxnj0jf4wo"]
 
 [ext_resource type="Theme" uid="uid://bykrg6edn1cmv" path="res://themes/main_menu_theme/main_menu_theme.theme" id="1_c0ewp"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_bb30y"]
-font_size = 8
-font_color = Color(0.105882, 0.141176, 0.278431, 1)
 
 [node name="SettingsOverlay" type="Control"]
 layout_mode = 3
@@ -27,11 +23,12 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_c0ewp")
 
 [node name="VolumeHeaderLabel" type="Label" parent="ScrollContainer/Control"]
 layout_mode = 2
+theme = ExtResource("1_c0ewp")
 text = "K_SETTINGS_VOLUME_HEADER"
-label_settings = SubResource("LabelSettings_bb30y")
 
 [node name="Tree" type="Tree" parent="ScrollContainer/Control"]
 layout_mode = 2
@@ -41,4 +38,5 @@ layout_mode = 2
 offset_top = 4.0
 offset_right = 256.0
 offset_bottom = 19.0
+theme = ExtResource("1_c0ewp")
 text = "K_SETTINGS_VOLUME_MUSIC"

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://crylxnpwyrcsv"]
+
+[ext_resource type="Script" path="res://classes/fisherratic2d/fisherratic2d.gd" id="1_sk2tn"]
+[ext_resource type="Texture2D" uid="uid://blysr1sepepvt" path="res://fish/mr_e/mr_e1.png" id="2_5tg3p"]
+[ext_resource type="Texture2D" uid="uid://bl317mcfefflx" path="res://fish/mr_e/mr_e2.png" id="3_bjdmw"]
+[ext_resource type="PackedScene" uid="uid://b84nnipr1ithf" path="res://scenes/fish_animator/fish_animator.tscn" id="4_clfk7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q66d3"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mi6f4"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_5tg3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bjdmw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MrE" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_sk2tn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_q66d3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mi6f4")
+frame_progress = 0.921576
+
+[node name="FishAnimator" parent="." instance=ExtResource("4_clfk7")]
+
+[editable path="FishAnimator"]
